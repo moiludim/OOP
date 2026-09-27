@@ -5,7 +5,6 @@
 #include "spec_func.hpp"
 #include "distributions.hpp"
 
-
 // Функция плотности
 double mainfunc(double x, double nu)
 {
@@ -19,7 +18,6 @@ double mainfunc(double x, double nu)
         * std::pow(std::cosh(x), nu));
 }
 
-
 // Дисперсия
 double dispersion(double nu)
 {
@@ -30,7 +28,6 @@ double dispersion(double nu)
 
     return 0.5 * trigamma(nu / 2);
 }
-
 
 // Коэффициент эксцесса
 double coeff_kurtosis(double nu)
@@ -44,8 +41,6 @@ double coeff_kurtosis(double nu)
         / std::pow(trigamma(nu / 2), 2));
 }
 
-
-
 double modeling_variable_osnraspr(double nu)
 {
     if (nu <= 0) {
@@ -57,8 +52,8 @@ double modeling_variable_osnraspr(double nu)
 
         while (true) {
 
-            double r1 =
-                static_cast<double>(rand()) / RAND_MAX;
+            double r1 = (static_cast<double>(rand()) + 0.5) /
+                (static_cast<double>(RAND_MAX) + 1.0);
 
             double x =
                 std::log(std::tan(M_PI * r1 / 2));
@@ -76,11 +71,11 @@ double modeling_variable_osnraspr(double nu)
 
         while (true) {
 
-            double r1 =
-                static_cast<double>(rand()) / RAND_MAX;
+            double r1 = (static_cast<double>(rand()) + 0.5) /
+                (static_cast<double>(RAND_MAX) + 1.0);
 
             double x =
-                std::log(0.5 * (r1 / (1 - r1)));
+                0.5*std::log((r1 / (1 - r1)));
 
             double r2 =
                 static_cast<double>(rand()) / RAND_MAX;
@@ -91,7 +86,6 @@ double modeling_variable_osnraspr(double nu)
         }
     }
 }
-
 
 double shift_scale_mainfunc(
     double x,
@@ -110,7 +104,6 @@ double shift_scale_mainfunc(
         );
 }
 
-
 // Дисперсия сдвиг-масштабного распределения
 double dispersion_shift_scale(
     double nu,
@@ -124,13 +117,6 @@ double dispersion_shift_scale(
     return dispersion(nu) * lambda * lambda;
 }
 
-
-double modeling_variable_shift_scale(
-    double mu,
-    double lambda)
-{
-    double r =
-        static_cast<double>(rand()) / RAND_MAX;
-
-    return mu + lambda * r;
+double modeling_variable_shift_scale(double mu, double lambda, double nu) {
+    return mu + lambda * modeling_variable_osnraspr(nu);
 }

@@ -9,7 +9,7 @@ void tests1();
 //  Сдвиг-масштабное распределение 
 double shift_scale_mainfunc(double x, double mu, double lambda, double nu);
 double dispersion_shift_scale(double nu, double lambda);
-double modeling_variable_shift_scale(double mu, double lambda);
+double modeling_variable_shift_scale(double mu, double lambda, double nu);
 
 //  Смесь распределений 
 double mixture(double x, double mu1, double lambda1, double nu1,
