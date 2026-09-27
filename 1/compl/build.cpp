@@ -9,6 +9,7 @@ int main()
     std::cout << "1. main_distribution.cpp\n";
     std::cout << "2. mixture_test.cpp\n";
     std::cout << "3. empiric_distribution.cpp\n";
+    std::cout << "4. test3.cpp\n";
     std::cout << "Ваш выбор: ";
 
     std::cin >> choice;
@@ -42,7 +43,12 @@ int main()
 
             system(".\\empiric_distribution.exe");
             break;
-
+        case 4:
+            system(
+                "g++ test3.cpp distributions.cpp mixture_distribution.cpp spec_func.cpp -o test3.exe"
+            );
+            system(".\\test3.exe");
+            break;
 
         default:
             std::cout << "Неверный выбор!\n";
