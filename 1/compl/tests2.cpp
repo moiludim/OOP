@@ -15,7 +15,7 @@ void tests2()
     double p = 0.3;
     double mu = x;
     double lambda = 2, nu = 4;
-    double D1 = dispersion_shift_scale(lambda, nu);
+    double D1 = dispersion_shift_scale(nu, lambda);
 
     double f = mixture(x, mu, lambda, nu, mu, lambda, nu, p);
     double M = expectation_mixture(mu, mu, p);
@@ -29,8 +29,8 @@ void tests2()
     std::cout << "3.2.2 сдвиговые преобразования: mu1=0, mu2=2, lambda1=lambda2=1, nu=4, p=0.75\n";
     p = 0.75;
     double M1 = 0, M2 = 2;
-    D1 = dispersion_shift_scale(1, 4);
-    double D2 = dispersion_shift_scale(1, 4);
+    D1 = dispersion_shift_scale(4, 1);
+    double D2 = dispersion_shift_scale(4, 1);
 
     f = mixture(0, 0, 1, 4, 2, 1, 4, p);
     M = expectation_mixture(M1, M2, p);
@@ -44,8 +44,8 @@ void tests2()
     std::cout << "3.2.3 масштабные преобразования: mu1=mu2=0, lambda1=1, lambda2=3, nu=4, p=0.5\n";
     p = 0.5;
     M1 = 0; M2 = 0;
-    D1 = dispersion_shift_scale(1, 4);
-    D2 = dispersion_shift_scale(3, 4);
+    D1 = dispersion_shift_scale(4, 1);
+    D2 = dispersion_shift_scale(4, 3);
 
     f = mixture(0, 0, 1, 4, 0, 3, 4, p);
     M = expectation_mixture(M1, M2, p);
@@ -59,8 +59,8 @@ void tests2()
     std::cout << "3.2.4 неравные параметры формы: mu1=mu2=0, lambda1=lambda2=1, nu1=2, nu2=4, p=0.5\n";
     p = 0.5;
     M1 = 0; M2 = 0;
-    D1 = dispersion_shift_scale(1, 2);
-    D2 = dispersion_shift_scale(1, 4);
+    D1 = dispersion_shift_scale(2, 1);
+    D2 = dispersion_shift_scale(4, 1);
 
     f = mixture(0, 0, 1, 2, 0, 1, 4, p);
     M = expectation_mixture(M1, M2, p);

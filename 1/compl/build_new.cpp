@@ -35,7 +35,7 @@ int main()
         case 2: {
             int build_result = system(
                 "g++ main.cpp tests1.cpp tests2.cpp tests3.cpp "
-                "mixture_distribution.cpp distributions.cpp spec_func.cpp "
+                "mixture_distribution.cpp distributions.cpp spec_func.cpp empiric_distribution.cpp"
                 "-o all_tests.exe"
             );
 
